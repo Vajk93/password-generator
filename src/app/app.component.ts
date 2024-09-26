@@ -1,4 +1,3 @@
-
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,30 +7,28 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  	title = 'password-generator';
+  	protected title = 'password-generator';
 	public strength: 0 | 1 | 2 | 3| 4 = 1;
 	protected isGeneratedPassword:boolean = false;
 	public password = 'P4$5W0rD!';
-	public charactersLength:number = 5;
+	public charactersLength:number = 0;
+	protected isErrorMsgVisible:boolean = false;
 
 	public changeChecked(optionIndex:number){
 		this.options[optionIndex].checked = !this.options[optionIndex].checked;
-		this.setStrength()
+		this.setStrength();
 	}
 
-	protected setStrength(){
-		this.strength = 0
-		this.options.map((option:any) => {
-			if(option.checked === true){
-				this.strength += 1;
-			}
-		})
-		console.log(this.strength);
+	protected clickGenerateBtn(){
+		if(this.charactersLength !== 0 && (this.options[0].checked || this.options[1].checked || this.options[2].checked || this.options[3].checked)){
+			this.generatePass();
+		} else {
+			this.isErrorMsgVisible = true;
+		}
 	}
 
 	protected generatePass(){
 		let _password = '';
-		// initial: (lowercase)
 		let string = ''
 		let strUppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 		let strLowercase = 'abcdefghijklmnopqrstuvwxyz'
@@ -55,11 +52,10 @@ export class AppComponent {
 			string += strSymbols
 		}
 
-    for (let i = 1; i < this.charactersLength +1; i++) {
-        let char = Math.floor(Math.random() * string.length);
-
-        _password += string.charAt(char)
-    }
+		for (let i = 1; i < this.charactersLength +1; i++) {
+			let char = Math.floor(Math.random() * string.length);
+			_password += string.charAt(char)
+		}
 		this.isGeneratedPassword = true;
 		this.password = _password;
 	}
@@ -67,6 +63,29 @@ export class AppComponent {
 	protected setLength(value:number){
 		this.charactersLength = value;
 		console.log('Az app komponensben a csúszka értéke: ' + value);
+		this.setStrength()
+	}
+
+	protected handleModal(value:boolean){
+		this.isErrorMsgVisible = value;
+	}
+
+	private setStrength(){
+		if(this.charactersLength === 0){
+			this.strength = 0;
+		}
+		if(this.charactersLength < 6 && this.charactersLength > 0){
+			this.strength = 1;
+		}
+		if(this.charactersLength < 11 && this.charactersLength > 5){
+			this.strength = 2;
+		}
+		if(this.charactersLength < 16 && this.charactersLength > 10){
+			this.strength = 3;
+		}
+		if(this.charactersLength < 21 && this.charactersLength > 15){
+			this.strength = 4;
+		}
 	}
 
 	protected options:any = [

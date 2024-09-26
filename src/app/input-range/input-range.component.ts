@@ -9,7 +9,7 @@ export class InputRangeComponent implements AfterViewInit {
 
 	@ViewChild('myRange') slider!: ElementRef;
 	@Output() newRangeValue = new EventEmitter<number>()
-	public sliderValue: number = 5;
+	public sliderValue: number = 0;
 
 	constructor(private renderer: Renderer2) {}
 

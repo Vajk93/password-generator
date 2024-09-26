@@ -1,0 +1,13 @@
+<div (click)="closeModal()" 
+    class="fixed top-0 left-0 right-0 bottom-0 bg-app-dark-grey bg-opacity-30 flex items-center justify-center backdrop-blur-sm">
+    <div (click)="$event.stopPropagation()" 
+        class="bg-app-green p-5 max-w-[400px] m-4 flex flex-col justify-center items-center gap-5">
+        <p class="text-center text-[16px] md:text-[24px] select-none">
+            Please select the number of characters and what characters the password should consist of.
+        </p>
+        <button (click)="closeModal()" 
+            class="p-1 border-[2px] border-app-dark-grey px-8 font-bold text-[24px] select-none lg:hover:bg-app-dark-grey lg:hover:text-app-white">
+            OK
+        </button>
+    </div>
+</div>
