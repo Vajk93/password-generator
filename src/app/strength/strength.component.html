@@ -1,0 +1,42 @@
+<div class="h-[56px] md:h-[72px] w-full bg-app-very-dark-grey flex justify-between items-center px-5 mt-10 mb-5">
+    <p class="flex-1 text-app-white text-[16px] md:text-[18px]">STRENGTH</p>
+    <p class="text-app-white text-[18px] md:text-[24px]">
+        {{
+        strength === 1 ? 'TOO WEAK!' 
+        : strength === 2 ? 'WEAK' 
+        : strength === 3 ? 'MEDIUM'
+        : strength === 4 ? 'STRONG' : 'TOO WEAK!'
+        }}
+    </p>
+    <div class="flex gap-2 ml-5">
+        <div [ngClass]="{
+            'bg-app-red border-[2px] border-app-red': strength === 0 || strength === 1,
+            'bg-app-orange border-[2px] border-app-orange': strength === 2,
+            'bg-app-yellow border-[2px] border-app-yellow': strength === 3,
+            'bg-app-green border-[2px] border-app-green': strength === 4,
+        }"
+            class="w-[10px] h-[28px]">
+        </div>
+        <div [ngClass]="{
+            'bg-app-dark-grey !border-[2px] !border-app-white': strength === 0 || strength === 1,
+            'bg-app-orange border-[2px] border-app-orange': strength === 2,
+            'bg-app-yellow border-[2px] border-app-yellow': strength === 3,
+            'bg-app-green border-[2px] border-app-green': strength === 4,
+        }"
+            class="w-[10px] h-[28px]">
+        </div>
+        <div [ngClass]="{
+            'bg-app-dark-grey !border-[2px] !border-app-white': strength === 0 || strength === 1 || strength === 2,
+            'bg-app-yellow border-[2px] border-app-yellow': strength === 3,
+            'bg-app-green border-[2px] border-app-green': strength === 4,
+        }"
+            class="w-[10px] h-[28px]">
+        </div>
+        <div [ngClass]="{
+            'bg-app-dark-grey !border-[2px] !border-app-white': strength === 0 || strength === 1 || strength === 2 || strength === 3,
+            'bg-app-green border-[2px] border-app-green': strength === 4,
+        }"
+            class="w-[10px] h-[28px]">
+        </div>
+    </div>
+</div>

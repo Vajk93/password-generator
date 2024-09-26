@@ -1,0 +1,15 @@
+<div class="flex justify-between items-center">
+    <p class="text-[16px] md:text-[18px] text-app-white font-bold">Character Length</p>
+    <p class="text-[24px] md:text-[32px] text-app-green font-bold">{{sliderValue}}</p>
+</div>
+
+<div class="slidecontainer mt-2 mb-5">
+    <input 
+      type="range" 
+      min="5" 
+      max="15" 
+      [value]="sliderValue" 
+      class="slider" 
+      #myRange 
+      (input)="onSliderChange($event)">
+</div>
