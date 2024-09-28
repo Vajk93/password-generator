@@ -80,10 +80,10 @@ export class AppComponent {
 		if(this.charactersLength < 11 && this.charactersLength > 5){
 			this.strength = 2;
 		}
-		if(this.charactersLength < 16 && this.charactersLength > 10){
+		if(this.charactersLength < 15 && this.charactersLength > 10){
 			this.strength = 3;
 		}
-		if(this.charactersLength < 21 && this.charactersLength > 15){
+		if(this.charactersLength > 14 && (this.options[0].checked && this.options[1].checked && this.options[2].checked && this.options[3].checked)){
 			this.strength = 4;
 		}
 	}
